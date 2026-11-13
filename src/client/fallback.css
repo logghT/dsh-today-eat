@@ -1,0 +1,81 @@
+/* 「今天吃什么」兜底面板（右栏不可见时的全屏浮层）。
+ * 触发条件：无前台会话 / 在插件页等非会话页面 / 宿主右栏服务不可用。
+ * 样式继续使用 DSH 主题变量 + fallback，不引外部资源。 */
+
+.tde-fallback-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10001;
+  display: flex;
+  justify-content: flex-end;
+  align-items: stretch;
+  padding: 18px;
+  background: rgba(15, 23, 42, 0.32);
+  pointer-events: auto;
+}
+
+.tde-fallback-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: min(760px, 92vw);
+  max-height: calc(100vh - 36px);
+  margin-left: auto;
+  overflow: hidden;
+  border: 1px solid var(--dsw-alias-border-l2, rgba(31, 35, 41, 0.12));
+  border-radius: 14px;
+  background: var(--dsw-alias-bg-layer-1, #ffffff);
+  box-shadow: var(--dsw-shadow-lv2, 0 12px 40px rgba(15, 23, 42, 0.24));
+}
+
+.tde-fallback-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--dsw-alias-label-secondary, #646a73);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.tde-fallback-close:hover {
+  background: var(--dsw-alias-interactive-bg-hover, rgba(31, 35, 41, 0.08));
+  color: var(--dsw-alias-label-primary, #1f2329);
+}
+
+.tde-fallback-body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 4px 12px 12px;
+}
+
+/* 兜底里复用同一个 .tde-panel：去掉为右栏定制的边距/边框，避免双重卡片 */
+.tde-fallback-body .tde-panel {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  padding: 0;
+  max-height: none;
+}
+
+@media (max-width: 720px) {
+  .tde-fallback-backdrop {
+    padding: 8px;
+  }
+
+  .tde-fallback-card {
+    width: 100%;
+  }
+}

@@ -1,0 +1,6 @@
+# Bundle patch 层：该行把本包的主入口当作 host 半加载（普通 Cordis 插件）；
+# 同时 package.json 里的 dsh.client.platform="web" 让 Web 客户端额外加载
+# exports["./client"] 指向的 lib/client.js 作为浏览器半（输入框上方横条）。
+- insert:
+    - id: dsh-today-eat
+      name: dsh-today-eat

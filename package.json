@@ -1,0 +1,62 @@
+{
+  "name": "dsh-today-eat",
+  "version": "0.4.0",
+  "private": false,
+  "description": "今天吃什么 · DSH diet assistant: nine meal phases with subgoals, taste profile, meal reminders, nearby restaurants, 1000 original recipes and nutrition tracking. 中文名「今天吃什么」。",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js"
+  },
+  "files": [
+    "lib",
+    "src/core",
+    "data",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE",
+    "screenshots.json",
+    "assets",
+    "docs"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web"
+    }
+  },
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0",
+    "dsh": ">=0.2.0-rc.1"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "diet",
+    "nutrition",
+    "meal-plan",
+    "recipe",
+    "food",
+    "deepseek-harness"
+  ],
+  "author": "dsh-today-eat contributors",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "node scripts/build-client.mjs",
+    "smoke": "node scripts/smoke-host.mjs && node scripts/smoke-client.mjs",
+    "smoke:host": "node scripts/smoke-host.mjs",
+    "smoke:client": "node scripts/smoke-client.mjs",
+    "validate:data": "node scripts/validate-data.mjs",
+    "check:duplicates": "node scripts/check-duplicates.mjs",
+    "test": "node --test \"tests/core/*.test.mjs\" \"tests/data/*.test.mjs\" \"tests/host/*.test.mjs\""
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  }
+}
