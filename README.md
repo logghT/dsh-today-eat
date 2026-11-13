@@ -31,10 +31,10 @@
 
 ```text
 # 插件管理页 → Add plugin → 填 GitHub 仓库地址，例如：
-https://github.com/<owner>/dsh-today-eat
+https://github.com/logghT/dsh-today-eat
 
 # 或 CLI（桌面版 profile 为 desktop，Web 版换成 web）：
-dsh plugin add https://github.com/<owner>/dsh-today-eat
+dsh plugin add https://github.com/logghT/dsh-today-eat
 ```
 
 **从 npm 安装**（发布后可用）
